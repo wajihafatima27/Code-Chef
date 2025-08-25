@@ -1,0 +1,14 @@
+t = int(input())
+for _ in range(t):
+    x, y, z = map(int, input().split())
+    # your code goes here
+    a = 400/x
+    b =400/y
+    c = 400/z
+    if a>b and a>c:
+        print ("alice")
+    elif b>a and b>c:
+        print("bob")
+    else:
+        print("charlie")
+    
