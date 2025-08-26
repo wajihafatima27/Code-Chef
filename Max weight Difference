@@ -1,0 +1,50 @@
+def main():
+   t = int(input())
+   for _ in range(t):
+      n,k=map(int, input().split())
+      w=list(map(int,input().split()))
+      total=sum(w)
+      w.sort()
+      sum1=sum(w[:k])
+      sum2=sum(w[-k:])
+      diff1=abs(sum1-(total-sum1))
+      diff2=abs(sum2-(total-sum2))
+      print(max(diff1,diff2))
+if __name__=="__main__":
+    main()
+    -----------------------------------
+    #include <stdio.h>
+#include<stdlib.h>
+int cmp(const void *a,const void *b){
+    return (*(int *)a- *(int *)b);
+    
+}
+
+int main() {
+    int t;
+    scanf("%d", &t);
+
+    while (t--) {
+        int n, k;
+        scanf("%d %d", &n, &k);
+        int w[n];
+        long long total=0;
+        for(int i=0;i<n;i++){
+            scanf("%d",&w[i]);
+            total+=w[i];
+        }
+        qsort(w,n,sizeof(int),cmp);
+        long long sum1=0;
+        for(int i=0;i<k;i++){
+            sum1+=w[i];
+        }
+        long long sum2=0;
+        for(int i=n-k;i<n;i++){
+            sum2+=w[i];
+        }
+        long long diff1=llabs((total-sum1)-sum1);
+        long long diff2=llabs((total-sum2)-sum2);
+        printf("%lld\n", (diff1>diff2 ? diff1:diff2));
+}
+    return 0;
+}
